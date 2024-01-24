@@ -105,4 +105,9 @@ def dist (α:Type) (β:Type ) (γ:Type ) (x:α × (β ⊕ γ)) : (α × β) ⊕ 
 -- Using the analogy between types and arithmetic, write a function that turns multiplication by
 -- two into a sum. In other words, it should have type Bool × α → α ⊕ α.
 
--- TODO: Bool?
+def mul2 (x : Bool × α) : α ⊕ α :=
+  match x.fst with
+  | true => Sum.inl x.snd
+  | false => Sum.inr x.snd
+
+#check mul2
